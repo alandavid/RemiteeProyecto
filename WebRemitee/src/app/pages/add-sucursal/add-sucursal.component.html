@@ -1,0 +1,62 @@
+<ng-template [ngIf]="ListPayers" >
+    <button class="pull-right" mat-raised-button (click)="GoToBack()" color="primary">Volver</button>
+    <br>
+    <br>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Agregar Rede</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="login-form">
+        <div class="example-container">
+          <mat-form-field required>
+            <mat-select [(value)]="Payer.PayerId"  [formControl]="form.controls['Rede']" placeholder="Rede">
+              <mat-option *ngFor="let result of ListPayers" [value]="result.id">{{result.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls['Rede'].hasError('required')">
+              Campo Requerido.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Codigo" [(ngModel)]="Payer.Code"  [formControl]="form.controls['Code']" name="Code" >
+            <mat-error *ngIf="form.controls['Code'].hasError('required')">
+              Campo Requerido.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Nombre Sucursal" [(ngModel)]="Payer.Name"  [formControl]="form.controls['Name']" name="Name" >
+            <mat-error *ngIf="form.controls['Name'].hasError('required')">
+              Campo Requerido.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Ubicacion" [(ngModel)]="Payer.FormattedAddress"  [formControl]="form.controls['FormattedAddress']" name="Direccion" >
+            <mat-error *ngIf="form.controls['FormattedAddress'].hasError('required')">
+              Campo Requerido.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Latitud" [(ngModel)]="Payer.Latitude" name="Lat"
+              [formControl]="form.controls['Latitude']">
+
+            <mat-error *ngIf="form.controls['Latitude'].hasError('required')">
+              Campo Requerido.</mat-error>
+            <mat-error *ngIf="form.controls['Latitude'].hasError('number') && form.controls['Latitude'].touched">Sólo
+              si acepta números.</mat-error>
+
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Longitud" [(ngModel)]="Payer.Longitude" name="Log" [formControl]="form.controls['Longitude']">
+            <mat-error *ngIf="form.controls['Longitude'].hasError('required')">
+              Campo Requerido.</mat-error>
+            <mat-error *ngIf="form.controls['Longitude'].hasError('number') && form.controls['Longitude'].touched">Sólo
+              si acepta números.</mat-error>
+          </mat-form-field>
+        </div>
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="Guardar()" [disabled]="!form.valid " color="primary">Guardar</button>
+      <button mat-raised-button (click)="Cancelar()" color="accent">Limpar</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-template>

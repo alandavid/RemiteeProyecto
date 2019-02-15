@@ -1,0 +1,122 @@
+<ng-template [ngIf]="Redes" [ngIfElse]="loading">
+    
+  <button class="pull-left" mat-raised-button (click)="GoToAgregarRede()" color="primary">Agregar rede</button>
+  <button class="pull-left" mat-raised-button (click)="Filtrar()" *ngIf="!filtrar" color="accent">Mostrar
+    Buscador de Sucursales</button>
+  <button class="pull-left" mat-raised-button (click)="Filtrar()" *ngIf="filtrar" color="accent">Ocultar
+    Buscador</button>
+  <br>
+  <br>
+  <mat-card *ngIf="filtrar">
+    <mat-card-header>
+      <mat-card-title>Buscar Sucursal mas cercana</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Latitud" [(ngModel)]="Latitude" name="Lat"
+            [formControl]="form.controls['Latitude']">
+
+          <mat-error *ngIf="form.controls['Latitude'].hasError('required')">
+            Campo Requerido.</mat-error>
+          <mat-error *ngIf="form.controls['Latitude'].hasError('number') && form.controls['Latitude'].touched">Sólo
+            si acepta números.</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Longitud" [(ngModel)]="Longitude" name="Log"
+            [formControl]="form.controls['Longitude']">
+          <mat-error *ngIf="form.controls['Longitude'].hasError('required')">
+            Campo Requerido.</mat-error>
+          <mat-error *ngIf="form.controls['Longitude'].hasError('number') && form.controls['Longitude'].touched">Sólo
+            si acepta números.</mat-error>
+        </mat-form-field>
+      </div>
+      <div *ngIf="Sucursal && Ubicacion"><h2>La Sucursal mas Cercana es: <strong>{{Sucursal}} y su direccion: {{Ubicacion}}</strong></h2></div>
+      
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="BuscarRedes()" [disabled]="!form.valid " color="primary">Buscar</button>
+      <button mat-raised-button (click)="CleanSearch()" color="accent">limpar Busqueda</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Redes registradas</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="input">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Busqueda">
+      </mat-form-field>
+      <table mat-table [dataSource]="Redes" class="table">
+
+        <!--- Note that these columns can be defined in any order.
+                        The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> # </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="code">
+          <th mat-header-cell *matHeaderCellDef> Code </th>
+          <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Nombre red </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="formattedAddress">
+          <th mat-header-cell *matHeaderCellDef> Direccion </th>
+          <td mat-cell *matCellDef="let element"> {{element.formattedAddress}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="latitude">
+          <th mat-header-cell *matHeaderCellDef> Latitude </th>
+          <td mat-cell *matCellDef="let element"> {{element.latitude}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="longitude">
+          <th mat-header-cell *matHeaderCellDef> Longitude </th>
+          <td mat-cell *matCellDef="let element"> {{element.longitude}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="accion">
+          <th mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button class="editar" (click)="GoToEditarRede(element.id)">Editar</button>
+            <button mat-raised-button class="eliminar" (click)="GoToEliminarRede(element.id)">Eliminar</button>
+          </td>
+        </ng-container>
+
+
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </mat-card-content>
+
+  </mat-card>
+
+
+
+
+
+</ng-template>
+
+  <ng-template #loading>
+  <div class="loader">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</ng-template>

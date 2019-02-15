@@ -1,0 +1,9 @@
+C:\Users\AlanPC\Desktop\Remiiter\WebApiRemitee\DataAccess\bin\Debug\netstandard2.0\DataAccess.deps.json
+C:\Users\AlanPC\Desktop\Remiiter\WebApiRemitee\DataAccess\bin\Debug\netstandard2.0\DataAccess.dll
+C:\Users\AlanPC\Desktop\Remiiter\WebApiRemitee\DataAccess\bin\Debug\netstandard2.0\DataAccess.pdb
+C:\Users\AlanPC\Desktop\Remiiter\WebApiRemitee\DataAccess\obj\Debug\netstandard2.0\DataAccess.csprojAssemblyReference.cache
+C:\Users\AlanPC\Desktop\Remiiter\WebApiRemitee\DataAccess\obj\Debug\netstandard2.0\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\AlanPC\Desktop\Remiiter\WebApiRemitee\DataAccess\obj\Debug\netstandard2.0\DataAccess.AssemblyInfoInputs.cache
+C:\Users\AlanPC\Desktop\Remiiter\WebApiRemitee\DataAccess\obj\Debug\netstandard2.0\DataAccess.AssemblyInfo.cs
+C:\Users\AlanPC\Desktop\Remiiter\WebApiRemitee\DataAccess\obj\Debug\netstandard2.0\DataAccess.dll
+C:\Users\AlanPC\Desktop\Remiiter\WebApiRemitee\DataAccess\obj\Debug\netstandard2.0\DataAccess.pdb
